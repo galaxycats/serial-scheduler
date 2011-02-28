@@ -23,7 +23,19 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
-     "lib/serial-scheduler.rb"
+     "lib/serial-scheduler.rb",
+     "lib/serial_scheduler.rb",
+     "lib/serial_scheduler/converter.rb",
+     "lib/serial_scheduler/date_day_names_core_extension.rb",
+     "lib/serial_scheduler/dsl.rb",
+     "lib/serial_scheduler/runner.rb",
+     "lib/serial_scheduler/time_table.rb",
+     "serial-scheduler.gemspec",
+     "test/converter_test.rb",
+     "test/dsl_test.rb",
+     "test/runner_test.rb",
+     "test/serial_scheduler_test.rb",
+     "test/test_helper.rb"
   ]
   s.homepage = %q{http://github.com/thyphoon/serial-scheduler}
   s.rdoc_options = ["--charset=UTF-8"]
