@@ -35,4 +35,16 @@ class RunnerTest < ActiveSupport::TestCase
     end
   end
   
+  test "should log executions to info" do
+    SerialScheduler.logger.expects(:info).times(2)
+    SerialScheduler::Runner.run("27.12.2010 00:00".to_datetime)
+  end
+
+  test "should log failed-executions to error" do
+    exception = NoMethodError.new("this is the no method exception")
+    RunnerTest::MockReceiver.expects(:lastminute).raises exception
+    SerialScheduler.logger.expects(:info)
+    SerialScheduler.logger.expects(:error)
+    SerialScheduler::Runner.run("27.12.2010 09:00".to_datetime)
+  end
 end

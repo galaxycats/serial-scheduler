@@ -11,15 +11,18 @@ class SerialScheduler::Runner
           if options[:dry_run]
             puts ">> #{job}"
           else
+            SerialScheduler.logger.info("executing '#{job}'", :_job => "#{job}")
+            start_time = Time.now
             job.call
+            end_time = Time.now
+            SerialScheduler.logger.info("successfully executed '#{job}' in #{(end_time - start_time)} seconds", :_job => "#{job}", :_execution_time => (end_time - start_time))
           end
         rescue => e
-          if defined?(Rails)
-            raise e if Rails.env.development?
-            Notifier.deliver_scheduler_error(e, job, time)
-          end
+          SerialScheduler.logger.error(e, :_job => "#{job}", :_execution_time => (start_time ? Time.now - start_time : "?"))
+          raise e if defined?(Rails) && Rails.env.development?
         end
       end
+      
     end
 
     def dry_run(time)

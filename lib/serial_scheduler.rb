@@ -19,6 +19,16 @@ module SerialScheduler
       add_transaction_tracer :run, :category => :task
     end
     
+    if defined?(Rails)
+      def logger
+        Rails.logger
+      end
+    else
+      def logger
+        SerialScheduler::Logger
+      end
+    end
+    
   end
   
 end
@@ -28,3 +38,4 @@ require "serial_scheduler/converter"
 require "serial_scheduler/dsl"
 require "serial_scheduler/runner"
 require "serial_scheduler/time_table"
+require "serial_scheduler/logger"
