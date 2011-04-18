@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{serial-scheduler}
-  s.version = "0.1.1"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andi Bade"]
-  s.date = %q{2011-02-28}
+  s.date = %q{2011-04-18}
   s.description = %q{Schedule Task – execute all tasks at the same time one after another}
   s.email = %q{andi@galaxycats.com}
   s.extra_rdoc_files = [
@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
      "lib/serial_scheduler/converter.rb",
      "lib/serial_scheduler/date_day_names_core_extension.rb",
      "lib/serial_scheduler/dsl.rb",
+     "lib/serial_scheduler/logger.rb",
      "lib/serial_scheduler/runner.rb",
      "lib/serial_scheduler/time_table.rb",
      "serial-scheduler.gemspec",
